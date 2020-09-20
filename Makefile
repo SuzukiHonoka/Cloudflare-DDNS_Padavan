@@ -7,7 +7,7 @@ BIN_PATH=/usr/bin
 THISDIR = $(shell pwd)
 
 all: bin_download src_download
-	cd BIN_NAME
+	cd $(BIN_NAME)
 	go get ./...
 	GOOS=linux GOARCH=mipsle go build -o cf main.go
 	$(CONFIG_CROSS_COMPILER_ROOT)/bin/mipsel-linux-uclibc-strip $(BIN_NAME)/$(BIN_NAME)
