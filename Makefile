@@ -11,7 +11,7 @@ THISDIR = $(shell pwd)
 all: bin_download src_download
 	export GOPATH=$(BUILD_PATH)
 	mkdir $(BUILD_PATH)/bin
-	export GOBIN=$GOPATH/bin
+	export GOBIN=$(GOPATH)/bin
 	cd $(DIST_PATH)/$(BIN_NAME)
 	go get ./...
 	GOOS=linux GOARCH=mipsle go build -o $(BIN_NAME) main.go
