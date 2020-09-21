@@ -12,7 +12,7 @@ all: bin_download src_download
 	export GOPATH=$(BUILD_PATH)
 	mkdir $(BUILD_PATH)/bin
 	export GOBIN=$GOPATH/bin
-	cd $(BUILD_PATH)/$(DIST_PATH)/$(BIN_NAME)
+	cd $(DIST_PATH)/$(BIN_NAME)
 	go get ./...
 	GOOS=linux GOARCH=mipsle go build -o $(BIN_NAME) main.go
 	$(CONFIG_CROSS_COMPILER_ROOT)/bin/mipsel-linux-uclibc-strip $(BIN_NAME)
