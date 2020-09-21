@@ -32,7 +32,7 @@ src_download:
 	fi )
 
 clean:
-	rm -rf $(BUILD_PATH)/$(BIN_NAME) && rm $(THISDIR)/$(SRC_NAME)
+	rm -rf $(BUILD_PATH) && rm $(THISDIR)/$(SRC_NAME)
 
 romfs:
 	$(ROMFSINST) -p +x $(DIST_PATH)/$(BIN_NAME)/$(BIN_NAME) $(BIN_PATH)/$(BIN_NAME)
