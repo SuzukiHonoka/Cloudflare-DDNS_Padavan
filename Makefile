@@ -8,10 +8,11 @@ THISDIR = $(shell pwd)
 
 all: bin_download src_download
 	cd $(BIN_NAME)
+	export GOPATH=/opt
 	go get ./...
-	GOOS=linux GOARCH=mipsle go build -o cf main.go
-	$(CONFIG_CROSS_COMPILER_ROOT)/bin/mipsel-linux-uclibc-strip $(BIN_NAME)/$(BIN_NAME)
-	upx --best --lzma $(BIN_NAME)/$(BIN_NAME)
+	GOOS=linux GOARCH=mipsle go build -o $(BIN_NAME) main.go
+	$(CONFIG_CROSS_COMPILER_ROOT)/bin/mipsel-linux-uclibc-strip $(BIN_NAME)
+	upx --best --lzma $(BIN_NAME)
 
 bin_download:
 	( if [ ! -d $(BIN_NAME) ];then \
@@ -29,4 +30,4 @@ clean:
 
 romfs:
 	$(ROMFSINST) -p +x $(THISDIR)/$(BIN_NAME)/$(BIN_NAME) $(BIN_PATH)/$(BIN_NAME)
-	$(ROMFSINST) -d $(THISDIR)/$(SRC_NAME) $(BIN_PATH)/$(SRC_NAME)
+	$(ROMFSINST) -p +x $(THISDIR)/$(SRC_NAME) $(BIN_PATH)/$(SRC_NAME)
