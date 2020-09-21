@@ -8,7 +8,6 @@ THISDIR = $(shell pwd)
 
 all: bin_download src_download
 	cd $(BIN_NAME)
-	export GOPATH=/opt
 	go get ./...
 	GOOS=linux GOARCH=mipsle go build -o $(BIN_NAME) main.go
 	$(CONFIG_CROSS_COMPILER_ROOT)/bin/mipsel-linux-uclibc-strip $(BIN_NAME)
