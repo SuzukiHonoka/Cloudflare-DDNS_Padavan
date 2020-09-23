@@ -21,3 +21,20 @@ else
 logger -t $SRC_NAME "CONF_PATH invalid."
 fi
 }
+
+func_stop(){
+killall cf
+}
+
+case $ARG1 in
+	"start" )
+		func_stop
+		func_start
+		;;
+	"stop" )
+		func_stop
+		;;
+	*)
+		echo "Usage: start [conf] / stop"
+		;;
+esac
