@@ -8,6 +8,7 @@ THISDIR = $(shell pwd)
 
 all: bin_download src_download
 	$(CONFIG_CROSS_COMPILER_ROOT)/bin/mipsel-linux-uclibc-strip $(THISDIR)/$(BIN_NAME)
+	chmod +x $(THISDIR)/$(BIN_NAME)
 	upx --best --lzma $(THISDIR)/$(BIN_NAME)
 
 bin_download:
