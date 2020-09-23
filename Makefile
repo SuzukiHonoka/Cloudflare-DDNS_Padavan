@@ -12,7 +12,7 @@ all: bin_download src_download
 
 bin_download:
 	( if [ ! -f $(BIN_NAME) ];then \
-		wget $(BIN_NAME); \
+		wget $(BIN_URL); \
 	fi )
 	
 
