@@ -23,7 +23,7 @@ fi
 }
 
 func_stop(){
-killall cf
+killall $SRC_NAME
 }
 
 case $ARG1 in
